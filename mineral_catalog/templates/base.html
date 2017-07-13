@@ -10,11 +10,83 @@
     <link href='https://fonts.googleapis.com/css?family=Work+Sans:400,500' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Cousine' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static 'css/global.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body>
-{% block content %}{% endblock %}
+<div class="bounds">
+    <div class="grid-100">
+        <a href="{% url 'minerals:list' %}">
+            <svg class="logo" viewBox="0 0 127.6 84.8" preserveAspectRation="xMinYMin meet">
+                <polygon points="42.7,84.8 49.6,79.4 40,62.5 51.2,43.5 51.2,43.5 25,0 0,55.6 "/>
+                <polygon class="logo--middle" points="52.9,79.5 52.9,79.5 84.8,80.1 59.7,35 43.3,62.4 "/>
+                <polygon points="127.6,61.4 127.6,61.4 110.3,13.5 110.3,13.5 70.3,48.1 70.3,48.1 88.3,80.5 95.3,81.4 95.3,81.4 "/>
+            </svg>
+            <h1 class="logo__name text-centered">Macky's Minerals</h1>
+        </a>
+        <p class="logo__text text-centered">They're not rocks!</p>
+    </div>
+    <div class="grid-100 alphabet-filter-bar">
+        <a href="{% url 'minerals:filter' letter='A' %}">A</a>
+        <a href="{% url 'minerals:filter' letter='B' %}">B</a>
+        <a href="{% url 'minerals:filter' letter='C' %}">C</a>
+        <a href="{% url 'minerals:filter' letter='D' %}">D</a>
+        <a href="{% url 'minerals:filter' letter='E' %}">E</a>
+        <a href="{% url 'minerals:filter' letter='F' %}">F</a>
+        <a href="{% url 'minerals:filter' letter='G' %}">G</a>
+        <a href="{% url 'minerals:filter' letter='H' %}">H</a>
+        <a href="{% url 'minerals:filter' letter='I' %}">I</a>
+        <a href="{% url 'minerals:filter' letter='J' %}">J</a>
+        <a href="{% url 'minerals:filter' letter='K' %}">K</a>
+        <a href="{% url 'minerals:filter' letter='L' %}">L</a>
+        <a href="{% url 'minerals:filter' letter='M' %}">M</a>
+        <a href="{% url 'minerals:filter' letter='N' %}">N</a>
+        <a href="{% url 'minerals:filter' letter='O' %}">O</a>
+        <a href="{% url 'minerals:filter' letter='P' %}">P</a>
+        <a href="{% url 'minerals:filter' letter='Q' %}">Q</a>
+        <a href="{% url 'minerals:filter' letter='R' %}">R</a>
+        <a href="{% url 'minerals:filter' letter='S' %}">S</a>
+        <a href="{% url 'minerals:filter' letter='T' %}">T</a>
+        <a href="{% url 'minerals:filter' letter='U' %}">U</a>
+        <a href="{% url 'minerals:filter' letter='V' %}">V</a>
+        <a href="{% url 'minerals:filter' letter='W' %}">W</a>
+        <a href="{% url 'minerals:filter' letter='X' %}">X</a>
+        <a href="{% url 'minerals:filter' letter='Y' %}">Y</a>
+        <a href="{% url 'minerals:filter' letter='Z' %}">Z</a>
+    </div>
+    <main class="grid-100">
+        <div class="main-nav">
+            <form action="{% url 'minerals:search' %}" method="GET" class="search-form">
+                <input type="search" name="q" class="search-box">
+                <input type="submit" value="Search" class="search-button">
+            </form>
+            <h2 class="category-heading">Category</h2>
+            <ul class="category-ul">
+                <li><a id="Silicate" href="{% url 'minerals:filter_by_cate' category='Silicate' %}">Silicates</a></li>
+                <li><a id="Oxide" href="{% url 'minerals:filter_by_cate' category='Oxide' %}">Oxides</a></li>
+                <li><a id="Sulfate" href="{% url 'minerals:filter_by_cate' category='Sulfate' %}">Sulfates</a></li>
+                <li><a id="Sulfide" href="{% url 'minerals:filter_by_cate' category='Sulfide' %}">Sulfides</a></li>
+                <li><a id="Carbonate" href="{% url 'minerals:filter_by_cate' category='Carbonate' %}">Carbonates</a></li>
+                <li><a id="Halide" href="{% url 'minerals:filter_by_cate' category='Halide' %}">Halides</a></li>
+                <li><a id="Sulfosalt" href="{% url 'minerals:filter_by_cate' category='Sulfosalt' %}">Sulfosalts</a></li>
+                <li><a id="Phosphate" href="{% url 'minerals:filter_by_cate' category='Phosphate' %}">Phosphates</a></li>
+                <li><a id="Borate" href="{% url 'minerals:filter_by_cate' category='Borate' %}">Borates</a></li>
+                <li><a id="Organic" href="{% url 'minerals:filter_by_cate' category='Organic' %}">Organic Minerals</a></li>
+                <li><a id="Arsenate" href="{% url 'minerals:filter_by_cate' category='Arsenate' %}">Arsenates</a></li>
+                <li><a id="Native" href="{% url 'minerals:filter_by_cate' category='Native' %}">Native Elements</a></li>
+                <li><a id="Other" href="{% url 'minerals:filter_by_cate' category='Other' %}">Other</a></li>
+            </ul>
+        </div>
+        {% block content %}{% endblock %}
+    </main>
+</div>
   <div class="minerals__random">
     <a class="minerals__anchor" href="{% url 'minerals:random' %}">Show random mineral</a>
   </div>
+    <script
+            src="https://code.jquery.com/jquery-3.2.1.min.js"
+            integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+            crossorigin="anonymous">
+    </script>
+    {% block javascript %}{% endblock %}
 </body>
 </html>
