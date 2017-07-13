@@ -1,0 +1,10 @@
+{% if value != '' %}
+<tr>
+    <td class="mineral__category">{{ field.verbose_name|title }}</td>
+    {% if field.name == 'formula' %}
+    <td class="mineral__formula">{{ value|safe }}</td>
+    {% else %}
+    <td>{{ value }}</td>
+    {% endif %}
+</tr>
+{% endif %}
